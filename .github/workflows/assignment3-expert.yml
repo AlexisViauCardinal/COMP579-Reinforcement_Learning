@@ -1,24 +1,21 @@
-name: GitHub Actions - Package Expert Agent Files
-run-name: ${{ github.actor }} generated new agents files
+name: Create Release
+run-name: ${{ github.actor }} generated new release
 on: [push]
 jobs:
   assignment3-expert-agent:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
-      - run: cd ${{ github.workspace }}
-      - run: tree
-      - run: cd ${{ github.workspace }}/Assignment3/ExpertAgent/
-      - name: clean-source
-        run: rm -f expert.tar
-      - name: Creating archive
-        run: tar -czf expert.tar.gz -T EXPORT.TXT
-      - name: upload-archive
-        id: upload-archive
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: expert.tar.gz
-          asset_name: expert.tar.gz
-          asset_content_type: application/gzip
+      - uses: actions/checkout@v1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Automatic release
+          draft: false
+          prerelease: false
