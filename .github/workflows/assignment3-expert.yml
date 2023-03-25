@@ -5,6 +5,6 @@ jobs:
   assignment3-expert-agent:
     runs-on: ubuntu-latest
     steps:
-      - run: cd /github/Assignment3/ExpertAgent/
+      - run: cd /github/workspace/Assignment3/ExpertAgent/
       - name: Creating archive
-        run: echo "hello"
+        run: tar -cvf expert.tar -T EXPORT.TXT
