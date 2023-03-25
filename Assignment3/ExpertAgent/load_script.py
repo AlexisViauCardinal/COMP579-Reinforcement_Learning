@@ -157,7 +157,7 @@ action_space = np.arange(start=env.action_space.start, stop = env.action_space.s
 discretizer = Discretizer()
 
 ## Q-LEARNING
-q_learning = QLearning(action_space, discretizer, TabularEstimator, 0.25, 0.9, epsilon = 0)
+q_learning = QLearning(action_space, discretizer, TabularEstimator, 0, 0.9, epsilon = 0)
 
 ## ACTOR
 actor = Actor(action_space, discretizer, TabularEstimator)
@@ -166,7 +166,7 @@ actor = Actor(action_space, discretizer, TabularEstimator)
 critic = Critic(discretizer, TabularEstimator)
 
 ## ACTOR-CRITIC
-actor_critic = ActorCritic(action_space, actor, critic, 0.9999, 0.25, 0.25, 0)
+actor_critic = ActorCritic(action_space, actor, critic, 0.9999, 0, 0, 0)
 
 ## LOADING
 with open("q_learning_0.pkl", 'rb') as f:
