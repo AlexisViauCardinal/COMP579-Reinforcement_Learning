@@ -5,6 +5,8 @@ jobs:
   assignment3-expert-agent:
     runs-on: ubuntu-latest
     steps:
+      - run: cd ${{ github.workspace }}
+      - run: tree
       - run: cd ${{ github.workspace }}/Assignment3/ExpertAgent/
       - name: clean-source
         run: rm -f expert.tar
