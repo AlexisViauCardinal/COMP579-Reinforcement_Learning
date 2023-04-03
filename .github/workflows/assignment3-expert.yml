@@ -1,6 +1,9 @@
 name: Create Release
 run-name: ${{ github.actor }} generated new release
-on: [push]
+on:
+  push:
+    tags:        
+      - '*'  
 jobs:
   assignment3-expert-agent:
     runs-on: ubuntu-latest
