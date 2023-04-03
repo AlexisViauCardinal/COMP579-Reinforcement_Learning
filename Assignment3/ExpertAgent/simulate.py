@@ -21,7 +21,6 @@ def simulate(env, estimator, episodes = 1000):
                 reward = 0
             episode_length += reward
 
-            estimator.update(observation, action, _observation, reward)
             observation = _observation
 
             end = terminated or truncated
